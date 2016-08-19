@@ -1,2 +1,12 @@
-# MakeAwesome
+# MakeAwesome();
 ImageEffect Manager for Unity
+
+Manage Unity's standard image effects in one Inspector Window, reduced to the (in my opinion) most important effects an settings. This project is currently in a realy early stage please stay tuned. 
+If you know how to improve MakeAwesome look at the contribution Guidelines and/or open Issues.
+
+#Contribution Guidelines
+Adding new image effects:
+Please not that MakeAwesome should be free to use, so please don't include image effects other than the standard effects. If you are the creator of an image effect and want to add it to the project please contact me first.
+
+
+
