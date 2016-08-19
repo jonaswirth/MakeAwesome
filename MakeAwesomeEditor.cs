@@ -15,7 +15,7 @@ public class MakeAwesomeEditor : Editor
         Undo.RecordObject(makeAwesome, "Undo");
         //Draws the MakeAwesome logo
         GUILayout.Label(Resources.Load("makeAwesome", typeof(Texture)) as Texture);
-        GUILayout.Label("MakeAwesome(); Version: 0.2");
+        GUILayout.Label("MakeAwesome(); Version: 0.21");
         GUILayout.Space(20);
         
         //Draws the object field for the sun
@@ -23,29 +23,29 @@ public class MakeAwesomeEditor : Editor
         GUILayout.Space(18);
         #region Settings
         GUILayout.Label("Global Multiplier");
-        makeAwesome.globalIntensity = EditorGUILayout.Slider(makeAwesome.globalIntensity, 0.2f, 5);
+        makeAwesome.settings.globalIntensity = EditorGUILayout.Slider(makeAwesome.settings.globalIntensity, 0.2f, 5);
         //Bloom
-        if (makeAwesome._Bloom = GUILayout.Toggle(makeAwesome._Bloom, "Bloom"))
+        if (makeAwesome.settings._Bloom = GUILayout.Toggle(makeAwesome.settings._Bloom, "Bloom"))
         {
-            makeAwesome.bloomIntensity = EditorGUILayout.Slider(makeAwesome.bloomIntensity, 0.1f, 1.5f);
+            makeAwesome.settings.bloomIntensity = EditorGUILayout.Slider(makeAwesome.settings.bloomIntensity, 0.1f, 1.5f);
         }
         //Crease Shading
-        if (makeAwesome._CreaseShading = GUILayout.Toggle(makeAwesome._CreaseShading, "Crease Shading"))
+        if (makeAwesome.settings._CreaseShading = GUILayout.Toggle(makeAwesome.settings._CreaseShading, "Crease Shading"))
         {
-            makeAwesome.creaseShadingIntensity = EditorGUILayout.Slider(makeAwesome.creaseShadingIntensity, 0.1f, 0.7f);
+            makeAwesome.settings.creaseShadingIntensity = EditorGUILayout.Slider(makeAwesome.settings.creaseShadingIntensity, 0.1f, 0.7f);
         }
         //Vignetting
-        if(makeAwesome._Vignette = GUILayout.Toggle(makeAwesome._Vignette, "Vignette"))
+        if(makeAwesome.settings._Vignette = GUILayout.Toggle(makeAwesome.settings._Vignette, "Vignette"))
         {
-            makeAwesome.vignetting = EditorGUILayout.Slider(makeAwesome.vignetting, 0.01f, 0.2f);
+            makeAwesome.settings.vignetting = EditorGUILayout.Slider(makeAwesome.settings.vignetting, 0.01f, 0.2f);
         }
         //Sun Shafts
-        if(makeAwesome._SunShafts = GUILayout.Toggle(makeAwesome._SunShafts, "Sun Shafts"))
+        if(makeAwesome.settings._SunShafts = GUILayout.Toggle(makeAwesome.settings._SunShafts, "Sun Shafts"))
         {
-            makeAwesome.sunShaftIntensity = EditorGUILayout.Slider(makeAwesome.sunShaftIntensity, 0.1f, 1f);
+            makeAwesome.settings.sunShaftIntensity = EditorGUILayout.Slider(makeAwesome.settings.sunShaftIntensity, 0.1f, 1f);
         }
         //Antialising
-        makeAwesome._AntiAlising = GUILayout.Toggle(makeAwesome._AntiAlising, "Antialising");
+        makeAwesome.settings._AntiAlising = GUILayout.Toggle(makeAwesome.settings._AntiAlising, "Antialising");
         #endregion
         #region functions
         //Applies the settings
@@ -64,6 +64,10 @@ public class MakeAwesomeEditor : Editor
         if (GUILayout.Button("Disable all"))
         {
             makeAwesome.DisableAll();
+        }
+        if(GUILayout.Button("Save Settings"))
+        {
+            makeAwesome.SaveSettings();
         }
         #endregion
     }

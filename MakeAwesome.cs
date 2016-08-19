@@ -9,6 +9,7 @@ using System.Collections;
 using UnityStandardAssets.ImageEffects;
 using UnityEditor;
 using System;
+using Assets.MakeAwesome.Src;
 
 [ExecuteInEditMode]
 public class MakeAwesome : MonoBehaviour
@@ -16,25 +17,30 @@ public class MakeAwesome : MonoBehaviour
     //References
     public GameObject Sun;
     //
-    public bool _Bloom = true;
-    public bool _CreaseShading = true;
-    public bool _AntiAlising = true;
-    public bool _Vignette = true;
-    public bool _SunShafts = true;
-
-    public float globalIntensity = 1;
-    public float bloomIntensity = 0.15f;
-    public float creaseShadingIntensity = 0.2f;
-    public float vignetting = 0.08f;
-    public float sunShaftIntensity = 0.5f;
-
-
     public Bloom bloom;
     public CreaseShading creaseShading;
     public Antialiasing antialising;
     public VignetteAndChromaticAberration vignette;
     public SunShafts sunShafts;
+    //public bool _Bloom = true;
+    //public bool _CreaseShading = true;
+    //public bool _AntiAlising = true;
+    //public bool _Vignette = true;
+    //public bool _SunShafts = true;
 
+    //public float globalIntensity = 1;
+    //public float bloomIntensity = 0.15f;
+    //public float creaseShadingIntensity = 0.2f;
+    //public float vignetting = 0.08f;
+    //public float sunShaftIntensity = 0.5f;
+
+
+    //public Bloom bloom;
+    //public CreaseShading creaseShading;
+    //public Antialiasing antialising;
+    //public VignetteAndChromaticAberration vignette;
+    //public SunShafts sunShafts;
+    public MakeAwesome_SettingsModel settings = new MakeAwesome_SettingsModel();
     private bool isSetup = false;
 
     public void Apply()
@@ -85,8 +91,8 @@ public class MakeAwesome : MonoBehaviour
         //Parameters
         if (bloom != null)
         {
-            bloom.bloomIntensity = bloomIntensity * globalIntensity;
-            bloom.enabled = _Bloom;
+            bloom.bloomIntensity = settings.bloomIntensity * settings.globalIntensity;
+            bloom.enabled = settings._Bloom;
         }
         else
         {
@@ -94,8 +100,8 @@ public class MakeAwesome : MonoBehaviour
         }
         if (creaseShading != null)
         {
-            creaseShading.intensity = creaseShadingIntensity * globalIntensity;
-            creaseShading.enabled = _CreaseShading;
+            creaseShading.intensity = settings.creaseShadingIntensity * settings.globalIntensity;
+            creaseShading.enabled = settings._CreaseShading;
         }
         else
         {
@@ -103,8 +109,8 @@ public class MakeAwesome : MonoBehaviour
         }
         if (vignette != null)
         {
-            vignette.intensity = vignetting;
-            vignette.enabled = _Vignette;
+            vignette.intensity = settings.vignetting;
+            vignette.enabled = settings._Vignette;
         }
         else
         {
@@ -112,8 +118,8 @@ public class MakeAwesome : MonoBehaviour
         }
         if (sunShafts != null)
         {
-            sunShafts.sunShaftIntensity = sunShaftIntensity;
-            sunShafts.enabled = _SunShafts;
+            sunShafts.sunShaftIntensity = settings.sunShaftIntensity;
+            sunShafts.enabled = settings._SunShafts;
             if (Sun != null)
             {
                 sunShafts.sunColor = Sun.GetComponent<Light>().color;
@@ -127,7 +133,7 @@ public class MakeAwesome : MonoBehaviour
         }
         if (antialising != null)
         {
-            antialising.enabled = _AntiAlising;
+            antialising.enabled = settings._AntiAlising;
         }
         else
         {
@@ -143,20 +149,25 @@ public class MakeAwesome : MonoBehaviour
         vignette.enabled = false;
         sunShafts.enabled = false;
     }
+    public void SaveSettings()
+    {
+        MakeAwesome_SaveLoad save = new MakeAwesome_SaveLoad();
+        save.SaveSettings(settings, "test");
+    }
 
     public void RestoreDefault()
     {
-        globalIntensity = 1;
-        bloomIntensity = 0.15f;
-        creaseShadingIntensity = 0.2f;
-        vignetting = 0.08f;
-        sunShaftIntensity = 0.5f;
+        settings.globalIntensity = 1;
+        settings.bloomIntensity = 0.15f;
+        settings.creaseShadingIntensity = 0.2f;
+        settings.vignetting = 0.08f;
+        settings.sunShaftIntensity = 0.5f;
 
-        _Bloom = true;
-        _CreaseShading = true;
-        _AntiAlising = true;
-        _Vignette = true;
-        _SunShafts = true;
+        settings._Bloom = true;
+        settings._CreaseShading = true;
+        settings._AntiAlising = true;
+        settings._Vignette = true;
+        settings._SunShafts = true;
         Apply();
     }
 }
