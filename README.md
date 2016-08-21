@@ -2,7 +2,7 @@
 **A simple image effect Manager for Unity**
 
 Manage Unity's standard image effects in one inspector window, reduced to the (in my opinion) most important effects an settings. This project is currently in a really early stage please stay tuned. 
-If you know how to improve MakeAwesome(); look at the contribution guidelines and/or open Issues.
+If you know how to improve MakeAwesome(); look at the contribution guidelines and/or open issues.
 
 #Contribution Guidelines
 **Adding new image effects:**<br>
