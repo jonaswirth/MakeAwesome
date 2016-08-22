@@ -11,11 +11,12 @@ public class MakeAwesomeEditor : Editor
     {
         //Get the target
         makeAwesome = (MakeAwesome)target;
+        //Params
         //Register undo operations
         Undo.RecordObject(makeAwesome, "Undo");
         //Draws the MakeAwesome logo
         GUILayout.Label(Resources.Load("makeAwesome", typeof(Texture)) as Texture);
-        GUILayout.Label("MakeAwesome(); Version: 0.21");
+        GUILayout.Label("MakeAwesome(); Version: 0.24");
         GUILayout.Space(20);
         
         //Draws the object field for the sun
@@ -65,8 +66,11 @@ public class MakeAwesomeEditor : Editor
         {
             makeAwesome.DisableAll();
         }
+        
+        makeAwesome.fileName_Save = EditorGUILayout.TextField("Name: ", makeAwesome.fileName_Save);
         if(GUILayout.Button("Save Settings"))
         {
+            Debug.Log(makeAwesome.fileName_Save);
             makeAwesome.SaveSettings();
         }
         if(GUILayout.Button("Load Settings"))

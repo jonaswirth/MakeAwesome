@@ -21,7 +21,7 @@ namespace Assets.MakeAwesome.Src
                     sw.Write(json);
                 }
 
-                Debug.Log("Saved sucessfully.");
+                Debug.Log("MakeAwesome: Saved sucessfully.");
             }
             catch (Exception ex)
             {
@@ -45,7 +45,7 @@ namespace Assets.MakeAwesome.Src
                     }
 
                 }
-                Debug.Log("Settings loaded.");
+                Debug.Log("MakeAwesome: Settings loaded.");
             }
             catch (Exception ex)
             {

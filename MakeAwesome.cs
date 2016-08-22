@@ -22,6 +22,9 @@ public class MakeAwesome : MonoBehaviour
     public Antialiasing antialising;
     public VignetteAndChromaticAberration vignette;
     public SunShafts sunShafts;
+
+    //Editor variables
+    public string fileName_Save = "fgd";
     //public bool _Bloom = true;
     //public bool _CreaseShading = true;
     //public bool _AntiAlising = true;
@@ -152,7 +155,7 @@ public class MakeAwesome : MonoBehaviour
     public void SaveSettings()
     {
         MakeAwesome_SaveLoad save = new MakeAwesome_SaveLoad();
-        save.SaveSettings(settings, "test");
+        save.SaveSettings(settings, fileName_Save);
     }
     public void LoadSettings()
     {
