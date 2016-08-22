@@ -69,6 +69,10 @@ public class MakeAwesomeEditor : Editor
         {
             makeAwesome.SaveSettings();
         }
+        if(GUILayout.Button("Load Settings"))
+        {
+            makeAwesome.LoadSettings();
+        }
         #endregion
     }
 }

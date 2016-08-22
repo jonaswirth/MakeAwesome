@@ -154,6 +154,11 @@ public class MakeAwesome : MonoBehaviour
         MakeAwesome_SaveLoad save = new MakeAwesome_SaveLoad();
         save.SaveSettings(settings, "test");
     }
+    public void LoadSettings()
+    {
+        MakeAwesome_SaveLoad load = new MakeAwesome_SaveLoad();
+        settings = load.LoadSettings("test");
+    }
 
     public void RestoreDefault()
     {

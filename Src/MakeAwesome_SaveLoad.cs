@@ -21,14 +21,37 @@ namespace Assets.MakeAwesome.Src
                     sw.Write(json);
                 }
 
-                Debug.Log("Saved sucessfully at: " + Path.GetFullPath(saveFile));
+                Debug.Log("Saved sucessfully.");
             }
             catch (Exception ex)
             {
-                Debug.Log("Something went wrong: " + ex);
+                Debug.LogError("Something went wrong:\n " + ex);
                 return false;
             }
             return true;
+        }
+        public MakeAwesome_SettingsModel LoadSettings(string name)
+        {
+            string loadFile = SavePath + name + ".json";
+            string json = "";
+            try
+            {
+                using (StreamReader sr = new StreamReader(loadFile))
+                {
+                    string line;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        json += line;
+                    }
+
+                }
+                Debug.Log("Settings loaded.");
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("Unable to read file:\n" + ex);
+            }
+            return JsonUtility.FromJson<MakeAwesome_SettingsModel>(json);
         }
     }
 }
