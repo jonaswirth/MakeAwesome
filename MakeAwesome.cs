@@ -2,7 +2,7 @@
 Author: Jonas Wirth
 Date: 06.08.2016
 Title: MakeAwesome(); 
-Version: 0.2
+Version: 0.25
 **************************/
 using UnityEngine;
 using System.Collections;
@@ -14,9 +14,10 @@ using Assets.MakeAwesome.Src;
 [ExecuteInEditMode]
 public class MakeAwesome : MonoBehaviour
 {
+    //Settings:
+    public MakeAwesome_SettingsModel settings = new MakeAwesome_SettingsModel();
     //References
     public GameObject Sun;
-    //
     public Bloom bloom;
     public CreaseShading creaseShading;
     public Antialiasing antialising;
@@ -25,25 +26,6 @@ public class MakeAwesome : MonoBehaviour
 
     //Editor variables
     public string fileName_Save = "fgd";
-    //public bool _Bloom = true;
-    //public bool _CreaseShading = true;
-    //public bool _AntiAlising = true;
-    //public bool _Vignette = true;
-    //public bool _SunShafts = true;
-
-    //public float globalIntensity = 1;
-    //public float bloomIntensity = 0.15f;
-    //public float creaseShadingIntensity = 0.2f;
-    //public float vignetting = 0.08f;
-    //public float sunShaftIntensity = 0.5f;
-
-
-    //public Bloom bloom;
-    //public CreaseShading creaseShading;
-    //public Antialiasing antialising;
-    //public VignetteAndChromaticAberration vignette;
-    //public SunShafts sunShafts;
-    public MakeAwesome_SettingsModel settings = new MakeAwesome_SettingsModel();
     private bool isSetup = false;
 
     public void Apply()
