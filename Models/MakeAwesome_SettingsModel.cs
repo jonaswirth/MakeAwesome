@@ -6,7 +6,6 @@ using System;
 [Serializable]
 public class MakeAwesome_SettingsModel {
 
-
     public bool _Bloom;
     public bool _CreaseShading;
     public bool _AntiAlising;

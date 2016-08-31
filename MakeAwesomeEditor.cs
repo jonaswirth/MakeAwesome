@@ -73,6 +73,7 @@ public class MakeAwesomeEditor : Editor
             Debug.Log(makeAwesome.fileName_Save);
             makeAwesome.SaveSettings();
         }
+        makeAwesome.selectedFile = EditorGUILayout.Popup("Open file: ", makeAwesome.selectedFile, makeAwesome.loadFiles);
         if(GUILayout.Button("Load Settings"))
         {
             makeAwesome.LoadSettings();

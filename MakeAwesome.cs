@@ -10,6 +10,7 @@ using UnityStandardAssets.ImageEffects;
 using UnityEditor;
 using System;
 using Assets.MakeAwesome.Src;
+using System.Collections.Generic;
 
 [ExecuteInEditMode]
 public class MakeAwesome : MonoBehaviour
@@ -28,6 +29,14 @@ public class MakeAwesome : MonoBehaviour
     public string fileName_Save = "fgd";
     private bool isSetup = false;
 
+    public string[] loadFiles;
+    public int selectedFile = 0;
+    MakeAwesome_SaveLoad saveLoad = new MakeAwesome_SaveLoad();
+
+    void Update()
+    {
+        loadFiles = saveLoad.GetSaveFiles();
+    }
     public void Apply()
     {
         if (isSetup)
@@ -136,13 +145,12 @@ public class MakeAwesome : MonoBehaviour
     }
     public void SaveSettings()
     {
-        MakeAwesome_SaveLoad save = new MakeAwesome_SaveLoad();
-        save.SaveSettings(settings, fileName_Save);
+        saveLoad.SaveSettings(settings, fileName_Save);
     }
     public void LoadSettings()
     {
-        MakeAwesome_SaveLoad load = new MakeAwesome_SaveLoad();
-        settings = load.LoadSettings("test");
+        Debug.Log(selectedFile);
+        settings = saveLoad.LoadSettings(loadFiles[selectedFile]);
     }
 
     public void RestoreDefault()
