@@ -2,7 +2,7 @@
 Author: Jonas Wirth
 Date: 06.08.2016
 Title: MakeAwesome(); 
-Version: 0.25
+Version: 0.3
 **************************/
 using UnityEngine;
 using System.Collections;
@@ -26,7 +26,7 @@ public class MakeAwesome : MonoBehaviour
     public SunShafts sunShafts;
 
     //Editor variables
-    public string fileName_Save = "fgd";
+    public string fileName_Save = "";
     private bool isSetup = false;
 
     public string[] loadFiles;
@@ -42,6 +42,7 @@ public class MakeAwesome : MonoBehaviour
         if (isSetup)
         {
             UpdateValues();
+            UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
         }
         else
         {
@@ -149,8 +150,9 @@ public class MakeAwesome : MonoBehaviour
     }
     public void LoadSettings()
     {
-        Debug.Log(selectedFile);
         settings = saveLoad.LoadSettings(loadFiles[selectedFile]);
+        fileName_Save = System.IO.Path.GetFileName(loadFiles[selectedFile]);
+        Apply();
     }
 
     public void RestoreDefault()

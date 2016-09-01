@@ -16,10 +16,11 @@ namespace Assets.MakeAwesome.Src
             try
             {
                 string json = JsonUtility.ToJson(settings);
-                using (StreamWriter sw = new StreamWriter(saveFile))
-                {
-                    sw.Write(json);
-                }
+                System.IO.File.WriteAllText(saveFile, json);
+                //using (StreamWriter sw = new StreamWriter(saveFile))
+                //{
+                //    sw.Write(json);
+                //}
 
                 Debug.Log("MakeAwesome: Saved sucessfully.");
             }
@@ -32,7 +33,9 @@ namespace Assets.MakeAwesome.Src
         }
         public MakeAwesome_SettingsModel LoadSettings(string name)
         {
-            string loadFile = SavePath + name + ".json";
+            string loadFile = SavePath + name;
+            if (!name.EndsWith(".json"))
+                loadFile += ".json";
             string json = "";
             try
             {
@@ -52,6 +55,19 @@ namespace Assets.MakeAwesome.Src
                 Debug.LogError("Unable to read file:\n" + ex);
             }
             return JsonUtility.FromJson<MakeAwesome_SettingsModel>(json);
+        }
+
+        public string[] GetSaveFiles()
+        {
+            List<string> files = new List<string>();
+            string[] tmp = Directory.GetFiles(SavePath);
+            foreach(string str in tmp)
+            {
+                if (str.EndsWith(".meta"))
+                    continue;
+                files.Add(System.IO.Path.GetFileName(str));
+            }
+            return files.ToArray();
         }
     }
 }

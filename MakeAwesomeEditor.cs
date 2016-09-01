@@ -16,7 +16,7 @@ public class MakeAwesomeEditor : Editor
         Undo.RecordObject(makeAwesome, "Undo");
         //Draws the MakeAwesome logo
         GUILayout.Label(Resources.Load("makeAwesome", typeof(Texture)) as Texture);
-        GUILayout.Label("MakeAwesome(); Version: 0.24");
+        GUILayout.Label("MakeAwesome(); Version: 0.3");
         GUILayout.Space(20);
         
         //Draws the object field for the sun
@@ -53,13 +53,11 @@ public class MakeAwesomeEditor : Editor
         if (GUILayout.Button("MakeAwesome();"))
         {
             makeAwesome.Apply();
-            UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
         }
         //Restore default values
         if (GUILayout.Button("Restore Default Settings"))
         {
             makeAwesome.RestoreDefault();
-            UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
         }
         //Disables all components
         if (GUILayout.Button("Disable all"))
