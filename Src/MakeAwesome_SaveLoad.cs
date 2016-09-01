@@ -12,15 +12,13 @@ namespace Assets.MakeAwesome.Src
         public const string SavePath = "Assets\\MakeAwesome\\resources\\SavedSettings\\";
         public bool SaveSettings(MakeAwesome_SettingsModel settings, string name)
         {
-            string saveFile = SavePath + name + ".json";
+            string saveFile = SavePath + name;
+            if (!name.EndsWith(".json"))
+                saveFile += ".json";
             try
             {
                 string json = JsonUtility.ToJson(settings);
                 System.IO.File.WriteAllText(saveFile, json);
-                //using (StreamWriter sw = new StreamWriter(saveFile))
-                //{
-                //    sw.Write(json);
-                //}
 
                 Debug.Log("MakeAwesome: Saved sucessfully.");
             }
