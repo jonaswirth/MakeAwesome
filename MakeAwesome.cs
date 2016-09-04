@@ -36,6 +36,10 @@ public class MakeAwesome : MonoBehaviour
 
     void Update()
     {
+        LoadSavedFiles();
+    }
+    public void LoadSavedFiles()
+    {
         loadFiles = saveLoad.GetSaveFiles();
     }
     public void Apply()
@@ -149,6 +153,7 @@ public class MakeAwesome : MonoBehaviour
     public void SaveSettings()
     {
         saveLoad.SaveSettings(settings, fileName_Save);
+        LoadSavedFiles();
     }
     public void LoadSettings()
     {

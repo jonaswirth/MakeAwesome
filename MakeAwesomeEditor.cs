@@ -54,7 +54,7 @@ public class MakeAwesomeEditor : Editor
             action = "Disable";
         if (GUILayout.Button(action+" all"))
             makeAwesome.DisableEnable();
-        makeAwesome.fileName_Save = EditorGUILayout.TextField("Name: ", makeAwesome.fileName_Save);
+        makeAwesome.fileName_Save = EditorGUILayout.TextField("Save file as: ", makeAwesome.fileName_Save);
         if(GUILayout.Button("Save Settings"))
         {
             Debug.Log(makeAwesome.fileName_Save);
