@@ -47,8 +47,13 @@ public class MakeAwesomeEditor : Editor
         if (GUILayout.Button("Restore Default Settings"))
             makeAwesome.RestoreDefault();
         //Disables all components
-        if (GUILayout.Button("Disable all"))
-            makeAwesome.DisableAll();
+        string action = "";
+        if (makeAwesome.disbaled == true)
+            action = "Enable";
+        else
+            action = "Disable";
+        if (GUILayout.Button(action+" all"))
+            makeAwesome.DisableEnable();
         makeAwesome.fileName_Save = EditorGUILayout.TextField("Name: ", makeAwesome.fileName_Save);
         if(GUILayout.Button("Save Settings"))
         {

@@ -29,6 +29,7 @@ public class MakeAwesome : MonoBehaviour
     public string fileName_Save = "";
     private bool isSetup = false;
 
+    public bool disbaled = false;
     public string[] loadFiles;
     public int selectedFile = 0;
     MakeAwesome_SaveLoad saveLoad = new MakeAwesome_SaveLoad();
@@ -136,13 +137,14 @@ public class MakeAwesome : MonoBehaviour
         }
     }
 
-    public void DisableAll()
+    public void DisableEnable()
     {
-        bloom.enabled = false;
-        creaseShading.enabled = false;
-        antialising.enabled = false;
-        vignette.enabled = false;
-        sunShafts.enabled = false;
+        disbaled = !disbaled;
+        bloom.enabled = !disbaled;
+        creaseShading.enabled = !disbaled;
+        antialising.enabled = !disbaled;
+        vignette.enabled = !disbaled;
+        sunShafts.enabled = !disbaled;
     }
     public void SaveSettings()
     {
