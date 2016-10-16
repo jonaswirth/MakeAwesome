@@ -1,0 +1,12 @@
+How to add MakeAwesome(); to your unity project
+
+Once you imported it to unity: 
+
+1. Place the MakeAwesome Folder directly under "Assets"
+2. Select your camera
+3. Add component -> "MakeAwesome"
+4. Select the image effects you want to add
+5. Configure the intensity of each effect
+6. Hit "MakeAwesome();"
+
+ 
