@@ -1,4 +1,9 @@
 # MakeAwesome();
+**Deprecated**
+
+MakeAwesome(); is unable to function with the new post-processing-stack (Unity 2017 and higher)
+
+
 **A simple image effect Manager for Unity**
 
 Manage Unity's standard image effects in one inspector window, reduced to the (in my opinion) most important effects and settings.<br>
